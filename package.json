@@ -1,0 +1,19 @@
+{
+  "name": "nangraph.cpp",
+  "version": "1.0.0",
+  "description": "A pure C++ library that represents a graph data structure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "c++",
+    "graph"
+  ],
+  "author": "Andrei Kashcha",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anvaka/nangraph.cpp"
+  }
+}
