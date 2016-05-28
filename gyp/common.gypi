@@ -1,6 +1,6 @@
 {
   'target_defaults': {
-    'cflags' : [ '-std=c++11', '-stdlib=libc++' ],
+    'cflags' : [ '-std=c++11' ],
     'target_conditions': [
       ['_type=="executable"', {
           'xcode_settings': {
