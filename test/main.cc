@@ -6,7 +6,7 @@
 TEST_CASE( "It can create a graph", "[creation]" ) {
   Graph g;
 
-  g.addNode(3);
+  g.addNode(1);
   g.addLink(1, 2);
 
   REQUIRE( g.getLinksCount() == 1 );

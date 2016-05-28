@@ -3,14 +3,14 @@
       'target_name': 'nangraph',
       'type': 'static_library',
       'sources': [
-        'src/graph.cc',
+        '../src/graph.cc',
       ],
       'include_dirs': [
-          'include'
+          '../include'
       ],
       'direct_dependent_settings': {
         'include_dirs': [
-          'include'
+          '../include'
         ],
       },
       'cflags' : [ '-std=c++14', '-stdlib=libc++' ],
@@ -33,10 +33,10 @@
       'type': 'executable',
       'dependencies': [
         'nangraph',
-        "<!(node -e \"console.log(require.resolve('catch.cc/binding.gyp') + ':*')\")"
+        "<!(node -e \"console.log(require.resolve('catch.cc/gyp/package.gyp') + ':*')\")"
       ],
       'sources': [
-        'test/main.cc'
+        '../test/main.cc'
       ],
       'cflags' : [ '-std=c++14', '-stdlib=libc++' ],
       'conditions': [

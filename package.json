@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A pure C++ library that represents a graph data structure",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "configure": "ngyp gyp/package.gyp --depth=. -f make --generator-output=build --toplevel-dir=.",
+    "clean": "rm -rf build",
+    "test": "make --directory=build && build/out/Default/test "
   },
   "keywords": [
     "c++",
@@ -16,6 +18,7 @@
     "url": "https://github.com/anvaka/nangraph.cpp"
   },
   "devDependencies": {
-    "catch.cc": "^1.5.4"
+    "catch.cc": "6.0.0",
+    "ngyp": "^1.0.1"
   }
 }
