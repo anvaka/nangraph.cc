@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "A pure C++ library that represents a graph data structure",
   "scripts": {
-    "configure": "ngyp gyp/package.gyp --depth=. -f make --generator-output=build --toplevel-dir=.",
+    "configure": "ngyp gyp/test.gyp --depth=. -f make --generator-output=build --toplevel-dir=.",
     "clean": "rm -rf build",
     "test": "make --directory=build && build/out/Default/test "
   },
