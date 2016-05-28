@@ -1,6 +1,6 @@
 {
   'target_defaults': {
-    'cflags' : [ '-std=c++14', '-stdlib=libc++' ],
+    'cflags' : [ '-std=c++11', '-stdlib=libc++' ],
     'target_conditions': [
       ['_type=="executable"', {
           'xcode_settings': {
@@ -12,7 +12,7 @@
     'conditions': [
         [ 'OS=="mac"', {
           'xcode_settings': {
-            'OTHER_CPLUSPLUSFLAGS' : [ '-std=c++14', '-stdlib=libc++' ],
+            'OTHER_CPLUSPLUSFLAGS' : [ '-std=c++11', '-stdlib=libc++' ],
             'MACOSX_DEPLOYMENT_TARGET': '10.7',
             'GCC_ENABLE_CPP_EXCEPTIONS': 'YES', # make sure we support exceptions
           },
