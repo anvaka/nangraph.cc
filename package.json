@@ -18,7 +18,7 @@
     "url": "https://github.com/anvaka/nangraph.cpp"
   },
   "devDependencies": {
-    "catch.cc": "6.0.0",
+    "catch.cc": "7.0.0",
     "ngyp": "^1.0.1"
   }
 }
