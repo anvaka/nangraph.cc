@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 
 #include "catch.hpp"
-#include "nangraph/graph.h"
+#include "nangraph.cc/graph.h"
 
 TEST_CASE( "It can create a graph", "[creation]" ) {
   Graph g;

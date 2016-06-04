@@ -1,5 +1,5 @@
 {
-  "name": "nangraph.cpp",
+  "name": "nangraph.cc",
   "version": "2.0.0",
   "description": "A pure C++ library that represents a graph data structure",
   "scripts": {
