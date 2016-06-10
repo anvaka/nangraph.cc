@@ -10,13 +10,16 @@
 class Graph;
 
 class Node {
-private:
+public:
   // these sets store all outgoing and incoming edges for a given node.
   // As you see this brings us to the world of oriented graphs. I'm not sure
   // if I'm going to add non-oriented graphs yet.
+  
+  // TODO: Should this be private? I know it kind'a should, but I'm so spoiled
+  // by javascript...
   std::multiset<std::size_t> inNodes, outNodes;
 
-public:
+
   Node() : inNodes(), outNodes() {}
 
   friend class Graph;
