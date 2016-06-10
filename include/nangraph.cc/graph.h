@@ -17,12 +17,25 @@ public:
   
   // TODO: Should this be private? I know it kind'a should, but I'm so spoiled
   // by javascript...
+  // TODO: Should this be a pointer?
   std::multiset<std::size_t> inNodes, outNodes;
 
 
   Node() : inNodes(), outNodes() {}
 
   friend class Graph;
+
+  int degree() {
+    return inNodes.size() + outNodes.size();
+  }
+
+  int inDegree() {
+    return inNodes.size();
+  }
+
+  int outDegree() {
+    return outNodes.size();
+  }
 };
 
 
