@@ -1,6 +1,6 @@
 {
   "name": "nangraph.cc",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "A pure C++ library that represents a graph data structure",
   "scripts": {
     "configure": "ngyp gyp/test.gyp --depth=. -f make --generator-output=build --toplevel-dir=.",
