@@ -10,32 +10,47 @@
 class Graph;
 
 class Node {
-public:
+private:
   // these sets store all outgoing and incoming edges for a given node.
   // As you see this brings us to the world of oriented graphs. I'm not sure
   // if I'm going to add non-oriented graphs yet.
-  
-  // TODO: Should this be private? I know it kind'a should, but I'm so spoiled
-  // by javascript...
-  // TODO: Should this be a pointer?
-  std::multiset<std::size_t> inNodes, outNodes;
+  std::multiset<std::size_t> *inNodes, *outNodes;
+public:
 
+  Node() {
+    inNodes = nullptr;
+    outNodes = nullptr;
+  }
 
-  Node() : inNodes(), outNodes() {}
+  ~Node() {
+    if (inNodes != nullptr) delete inNodes;
+    if (outNodes != nullptr) delete outNodes;
+  }
 
   friend class Graph;
 
   int degree() {
-    return inNodes.size() + outNodes.size();
+    return inDegree() + outDegree();
   }
 
   int inDegree() {
-    return inNodes.size();
+    return inNodes == nullptr ? 0 : inNodes->size();
   }
 
   int outDegree() {
-    return outNodes.size();
+    return outNodes == nullptr ? 0 : outNodes->size();
   }
+
+  void addOutLink(std::size_t id) {
+    if (outNodes == nullptr) outNodes = new std::multiset<std::size_t>();
+    outNodes->insert(id);
+  }
+
+  void addInLink(std::size_t id) {
+    if (inNodes == nullptr) inNodes = new std::multiset<std::size_t>();
+    inNodes->insert(id);
+  }
+
 };
 
 

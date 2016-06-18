@@ -38,7 +38,9 @@ bool Graph::forEachNode(NodeCallback callback) {
 
 bool Graph::forEachLink(LinkCallback callback) {
   for (auto &node: _nodes) {
-    for(auto &to: node.second->outNodes) {
+    auto outNodes = node.second->outNodes;
+    if (outNodes == nullptr) continue;
+    for(auto to: *outNodes) {
       auto linkId = getLinkId(node.first, to);
       auto shouldStop = callback(node.first, to, linkId);
       if (shouldStop) return true;
@@ -52,9 +54,10 @@ bool Graph::forEachLinkedNode(const std::size_t nodeId, bool isOut, NodeLinkCall
   auto node = getNode(nodeId);
   if (node == nullptr) return false; // we didn't quit because user wanted.
 
-  auto *collection = isOut ? &(node->outNodes) : &(node->inNodes);
+  auto *collection = isOut ? node->outNodes : node->inNodes;
+  if (collection == nullptr) return false; // nothing to iterate. No neighbours.
 
-  for(auto &otherNodeId: *collection) {
+  for(auto otherNodeId: *collection) {
     auto linkId = isOut ? getLinkId(nodeId, otherNodeId) : getLinkId(otherNodeId, nodeId);
     auto shouldStop = callback(otherNodeId, linkId);
     if (shouldStop) return true; // user asked us to quit faster than we finished.
@@ -67,8 +70,9 @@ std::size_t Graph::addLink(const std::size_t& fromId, const std::size_t &toId) {
   auto fromNode = addNode(fromId);
   auto toNode = addNode(toId);
 
-  fromNode->outNodes.insert(toId);
-  toNode->inNodes.insert(fromId);
+  fromNode->addOutLink(toId);
+  toNode->addInLink(fromId);
+
   _linksCount += 1;
 
   return getLinkId(fromId, toId);
@@ -84,6 +88,8 @@ std::size_t Graph::getLinkId(const std::size_t& fromId, const std::size_t &toId)
 bool Graph::hasLink(const std::size_t& fromId, const std::size_t &toId) {
   auto fromNode = getNode(fromId);
   if (fromNode == nullptr) return false;
+  auto outNodes = fromNode->outNodes;
 
-  return fromNode->outNodes.find(toId) != fromNode->outNodes.end();
+  if (outNodes == nullptr) return false;
+  return outNodes->find(toId) != fromNode->outNodes->end();
 }
